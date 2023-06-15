@@ -1,7 +1,5 @@
 # 开发第一个基于PyQt5的桌面应用
-
 import sys
-
 from PyQt5.QtWidgets import (
     QApplication
 )

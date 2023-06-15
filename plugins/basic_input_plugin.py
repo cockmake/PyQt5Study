@@ -1,19 +1,19 @@
 # coding: utf-8
-import traceback
-try:
-    from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
-    from qfluentwidgets import (PrimaryPushButton, SplitPushButton, DropDownPushButton,
-                                ToolButton, SplitToolButton, DropDownToolButton, FluentIcon, ToggleButton,
-                                SwitchButton, RadioButton, CheckBox, HyperlinkButton, Slider, ComboBox, IconWidget,
-                                EditableComboBox, PixmapLabel, PushButton, PrimaryToolButton, PrimarySplitToolButton,
-                                PrimarySplitPushButton, PrimaryDropDownPushButton, PrimaryDropDownToolButton, TransparentToolButton)
+# import traceback
+# try:
+from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
+from qfluentwidgets import (PrimaryPushButton, SplitPushButton, DropDownPushButton,
+                            ToolButton, SplitToolButton, DropDownToolButton, FluentIcon, ToggleButton,
+                            SwitchButton, RadioButton, CheckBox, HyperlinkButton, Slider, ComboBox, IconWidget,
+                            EditableComboBox, PixmapLabel, PushButton, PrimaryToolButton, PrimarySplitToolButton,
+                            PrimarySplitPushButton, PrimaryDropDownPushButton, PrimaryDropDownToolButton, TransparentToolButton)
 
-    from plugin_base import PluginBase
-    from task_menu_factory import EditTextTaskMenuFactory
-except Exception as E:
-    print(str(E))
-    with open('error.txt', 'w', encoding='utf-8') as f:
-        f.write(traceback.format_exc())
+from plugin_base import PluginBase
+from task_menu_factory import EditTextTaskMenuFactory
+# except Exception as E:
+#     print(str(E))
+#     with open('error.txt', 'w', encoding='utf-8') as f:
+#         f.write(traceback.format_exc())
 
 
 class BasicInputPlugin(PluginBase):

@@ -114,7 +114,7 @@
      <x>320</x>
      <y>320</y>
      <width>131</width>
-     <height>21</height>
+     <height>33</height>
     </rect>
    </property>
   </widget>
@@ -204,7 +204,7 @@
   <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
-   <header location="global">qfluentwidgets</header>
+   <header>qfluentwidgets</header>
   </customwidget>
  </customwidgets>
  <resources>

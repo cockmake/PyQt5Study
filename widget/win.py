@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtWidgets import QDesktopWidget, QPushButton, QFileDialog
 from ui import one
 import cv2 as cv
@@ -14,6 +14,11 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
         # 手动绑定信号和槽
         self.pushButton.clicked.connect(self.button_clicked)
         self.open_img.clicked.connect(self.to_open_img)
+        self.open_win2.clicked.connect(self.open_new_win)
+        self.close_win2.clicked.connect(self.close_new_win)
+        self.son_win = None
+        print('我被创建了')
+        self.ancestor = self
 
     def center(self):
         screenRect = QDesktopWidget().screenGeometry()
@@ -40,3 +45,24 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
 
     def init_style(self):
         self.setStyleSheet(qss)
+
+
+    def open_new_win(self, flag):
+        if self.son_win is not None:
+            self.son_win.show()
+        else:
+            self.son_win = Win()
+        self.son_win.show()
+
+    def close_new_win(self, flag):
+        if self.son_win is not None:
+            del self.son_win
+            self.son_win = None
+
+    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        if self.son_win is not None:
+            del self.son_win
+        event.setAccepted(True)
+
+    def __del__(self):
+        print('我被释放了')

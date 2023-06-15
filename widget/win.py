@@ -1,11 +1,15 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QDesktopWidget, QPushButton, QFileDialog
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtWidgets import QDesktopWidget, QFileDialog
 from ui import one
 import cv2 as cv
 import utils
 from widget.style import qss
 from PyQt5.QtGui import QPixmap
 class Win(QtWidgets.QWidget, one.Ui_Form):
+    # 自定义信号 在这
+    sss = pyqtSignal(str, int)
+
     def __init__(self):
         super(Win, self).__init__()
         self.setupUi(self)
@@ -16,9 +20,15 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
         self.open_img.clicked.connect(self.to_open_img)
         self.open_win2.clicked.connect(self.open_new_win)
         self.close_win2.clicked.connect(self.close_new_win)
+        self.emitS.clicked.connect(self.sendSignal)
         self.son_win = None
         print('我被创建了')
-        self.ancestor = self
+        # 连接信号和槽在这
+        self.sss.connect(self.rrr)
+
+    # 触发信号在这
+    def sendSignal(self):
+        self.sss.emit('1', 1)
 
     def center(self):
         screenRect = QDesktopWidget().screenGeometry()
@@ -61,8 +71,15 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         if self.son_win is not None:
+            self.son_win.close()
             del self.son_win
         event.setAccepted(True)
 
     def __del__(self):
         print('我被释放了')
+
+    # 自定义槽函数
+    def rrr(self, a, b):
+        # print(self.sender())
+        self.SearchLineEdit.setText(a)
+        print(a, b)

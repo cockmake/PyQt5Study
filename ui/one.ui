@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>715</width>
-    <height>551</height>
+    <height>606</height>
    </rect>
   </property>
   <property name="font">
@@ -194,6 +194,54 @@
     </property>
    </item>
   </widget>
+  <widget class="ListWidget" name="ListWidget">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>400</y>
+     <width>61</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>3</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="SearchLineEdit" name="SearchLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>410</y>
+     <width>187</width>
+     <height>33</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="PrimaryPushButton" name="emitS">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>460</y>
+     <width>153</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>触发自定义信号</string>
+   </property>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
@@ -202,8 +250,23 @@
    <header>qfluentwidgets</header>
   </customwidget>
   <customwidget>
+   <class>PrimaryPushButton</class>
+   <extends>PushButton</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
    <class>LineEdit</class>
    <extends>QLineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>SearchLineEdit</class>
+   <extends>LineEdit</extends>
+   <header>qfluentwidgets</header>
+  </customwidget>
+  <customwidget>
+   <class>ListWidget</class>
+   <extends>QListWidget</extends>
    <header>qfluentwidgets</header>
   </customwidget>
  </customwidgets>
@@ -240,6 +303,38 @@
     <hint type="destinationlabel">
      <x>110</x>
      <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SearchLineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>lineEdit</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>409</x>
+     <y>389</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>355</x>
+     <y>346</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SearchLineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>setWindowTitle(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>474</x>
+     <y>386</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>502</y>
     </hint>
    </hints>
   </connection>

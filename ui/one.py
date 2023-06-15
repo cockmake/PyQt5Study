@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(715, 551)
+        Form.resize(715, 606)
         font = QtGui.QFont()
         font.setPointSize(11)
         Form.setFont(font)
@@ -45,7 +45,7 @@ class Ui_Form(object):
         self.open_img.setGeometry(QtCore.QRect(610, 10, 101, 31))
         self.open_img.setObjectName("open_img")
         self.lineEdit = LineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(320, 320, 131, 21))
+        self.lineEdit.setGeometry(QtCore.QRect(320, 320, 131, 33))
         self.lineEdit.setObjectName("lineEdit")
         self.listWidget = QtWidgets.QListWidget(Form)
         self.listWidget.setGeometry(QtCore.QRect(60, 190, 81, 192))
@@ -67,10 +67,27 @@ class Ui_Form(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
+        self.ListWidget = ListWidget(Form)
+        self.ListWidget.setGeometry(QtCore.QRect(130, 400, 61, 192))
+        self.ListWidget.setObjectName("ListWidget")
+        item = QtWidgets.QListWidgetItem()
+        self.ListWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.ListWidget.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.ListWidget.addItem(item)
+        self.SearchLineEdit = SearchLineEdit(Form)
+        self.SearchLineEdit.setGeometry(QtCore.QRect(200, 410, 187, 33))
+        self.SearchLineEdit.setObjectName("SearchLineEdit")
+        self.emitS = PrimaryPushButton(Form)
+        self.emitS.setGeometry(QtCore.QRect(210, 460, 153, 32))
+        self.emitS.setObjectName("emitS")
 
         self.retranslateUi(Form)
         self.cBox.toggled['bool'].connect(self.pushButton.setVisible) # type: ignore
         self.cBox.toggled['bool'].connect(self.cBox_2.setChecked) # type: ignore
+        self.SearchLineEdit.textChanged['QString'].connect(self.lineEdit.setText) # type: ignore
+        self.SearchLineEdit.textChanged['QString'].connect(Form.setWindowTitle) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
@@ -93,5 +110,15 @@ class Ui_Form(object):
         self.comboBox.setItemText(1, _translate("Form", "2"))
         self.comboBox.setItemText(2, _translate("Form", "3"))
         self.comboBox.setItemText(3, _translate("Form", "4"))
-from qfluentwidgets import LineEdit, PushButton
+        __sortingEnabled = self.ListWidget.isSortingEnabled()
+        self.ListWidget.setSortingEnabled(False)
+        item = self.ListWidget.item(0)
+        item.setText(_translate("Form", "1"))
+        item = self.ListWidget.item(1)
+        item.setText(_translate("Form", "2"))
+        item = self.ListWidget.item(2)
+        item.setText(_translate("Form", "3"))
+        self.ListWidget.setSortingEnabled(__sortingEnabled)
+        self.emitS.setText(_translate("Form", "触发自定义信号"))
+from qfluentwidgets import LineEdit, ListWidget, PrimaryPushButton, PushButton, SearchLineEdit
 import source_rc

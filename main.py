@@ -15,7 +15,7 @@ QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 if __name__ == '__main__':
     # 创建QApplication类的实例
     app = QApplication(sys.argv)
-    # apply_stylesheet(app, 'default')
+    apply_stylesheet(app, 'default')
     # 创建一个窗口 可传递参数 窗口由ui初始化 更加独立化的设计
     win_one = win.Win()
     # 显示窗口

@@ -1,14 +1,17 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt
 from PyQt5.QtWidgets import QDesktopWidget, QFileDialog
 from ui import one
 import cv2 as cv
+import os
 import utils
 from widget.style import qss
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QWindow
+# 窗口自己无法释放自己, 但是可以通过外部调用
 class Win(QtWidgets.QWidget, one.Ui_Form):
     # 自定义信号 在这
     sss = pyqtSignal(str, int)
+    close_s = pyqtSignal()
 
     def __init__(self):
         super(Win, self).__init__()
@@ -56,12 +59,10 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
     def init_style(self):
         self.setStyleSheet(qss)
 
-
     def open_new_win(self, flag):
-        if self.son_win is not None:
-            self.son_win.show()
-        else:
+        if self.son_win is None:
             self.son_win = Win()
+            self.son_win.close_s.connect(self.closeSonWin)  # 子窗口与父窗口的关闭释放函数绑定
         self.son_win.show()
 
     def close_new_win(self, flag):
@@ -70,16 +71,20 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
             self.son_win = None
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        if self.son_win is not None:
-            self.son_win.close()
-            del self.son_win
-        event.setAccepted(True)
+        self.close_s.emit()
+        event.accept()
 
     def __del__(self):
         print('我被释放了')
 
     # 自定义槽函数
     def rrr(self, a, b):
-        # print(self.sender())
+        if self.son_win is not None:
+            print(self.son_win.windowTitle())
+        # print(self.sender()) # 是主窗口
         self.SearchLineEdit.setText(a)
-        print(a, b)
+
+    # 自定义槽函数
+    def closeSonWin(self):
+        # 这里利用python的垃圾回收机制释放窗口占用的资源
+        self.son_win = None

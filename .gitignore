@@ -6,4 +6,3 @@ venv
 build
 dist
 *.spec
-error.txt

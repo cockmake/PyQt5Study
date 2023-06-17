@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "D:\pyqt_study\plugins\basic_input_plugin.py", line 5, in <module>
+    from qfluentwidgets import (PrimaryPushButton, SplitPushButton, DropDownPushButton,
+  File "D:\pyqt_study\qfluentwidgets\__init__.py", line 17, in <module>
+    from .components import *
+  File "D:\pyqt_study\qfluentwidgets\components\__init__.py", line 1, in <module>
+    from .dialog_box import *
+  File "D:\pyqt_study\qfluentwidgets\components\dialog_box\__init__.py", line 1, in <module>
+    from .color_dialog import ColorDialog
+  File "D:\pyqt_study\qfluentwidgets\components\dialog_box\color_dialog.py", line 8, in <module>
+    from ..widgets import Slider, SingleDirectionScrollArea, PushButton, PrimaryPushButton
+  File "D:\pyqt_study\qfluentwidgets\components\widgets\__init__.py", line 1, in <module>
+    from .button import (DropDownPushButton, DropDownToolButton, PrimaryPushButton, PushButton, RadioButton,
+  File "D:\pyqt_study\qfluentwidgets\components\widgets\button.py", line 14, in <module>
+    from .menu import RoundMenu
+  File "D:\pyqt_study\qfluentwidgets\components\widgets\menu.py", line 5, in <module>
+    from qframelesswindow import WindowEffect
+  File "D:\pyqt_study\qframelesswindow\__init__.py", line 21, in <module>
+    from .titlebar import TitleBar, TitleBarButton, SvgTitleBarButton, StandardTitleBar
+  File "D:\pyqt_study\qframelesswindow\titlebar\__init__.py", line 8, in <module>
+    from ..utils import startSystemMove
+  File "D:\pyqt_study\qframelesswindow\utils\__init__.py", line 5, in <module>
+    from .win32_utils import WindowsMoveResize as MoveResize
+  File "D:\pyqt_study\qframelesswindow\utils\win32_utils.py", line 7, in <module>
+    import win32api
+ModuleNotFoundError: No module named 'win32api'

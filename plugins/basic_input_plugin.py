@@ -15,7 +15,6 @@ except Exception as E:
     with open('error.txt', 'w', encoding='utf-8') as f:
         f.write(traceback.format_exc())
 
-
 class BasicInputPlugin(PluginBase):
 
     def group(self):

@@ -17,8 +17,10 @@ class Win2(QtWidgets.QWidget, two.Ui_Form2):
         print('我被释放了')
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        # 关闭自己所占的资源
+        print('关闭所占资源...')
         self.close_s.emit()
-        event.accept()
+
 
     def init_style(self):
         self.setStyleSheet(qss)

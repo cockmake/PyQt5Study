@@ -12,7 +12,7 @@ try:
     from task_menu_factory import EditTextTaskMenuFactory
 except Exception as E:
     print(str(E))
-    with open('error.txt', 'w', encoding='utf-8') as f:
+    with open('error.log', 'w', encoding='utf-8') as f:
         f.write(traceback.format_exc())
 
 class BasicInputPlugin(PluginBase):

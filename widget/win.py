@@ -5,13 +5,13 @@ from ui import one
 import cv2 as cv
 import os
 import utils
+from .win2 import Win2
 from widget.style import qss
 from PyQt5.QtGui import QPixmap, QWindow
 # 窗口自己无法释放自己, 但是可以通过外部调用
 class Win(QtWidgets.QWidget, one.Ui_Form):
     # 自定义信号 在这
     sss = pyqtSignal(str, int)
-    close_s = pyqtSignal()
 
     def __init__(self):
         super(Win, self).__init__()
@@ -61,7 +61,12 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
 
     def open_new_win(self, flag):
         if self.son_win is None:
-            self.son_win = Win()
+            try:
+                self.son_win = Win2()
+            except Exception as E:
+                print(str(E))
+                self.son_win = None
+                return
             self.son_win.close_s.connect(self.closeSonWin)  # 子窗口与父窗口的关闭释放函数绑定
         self.son_win.show()
 
@@ -70,17 +75,11 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
             del self.son_win
             self.son_win = None
 
-    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        self.close_s.emit()
-        event.accept()
-
     def __del__(self):
         print('我被释放了')
 
     # 自定义槽函数
     def rrr(self, a, b):
-        if self.son_win is not None:
-            print(self.son_win.windowTitle())
         # print(self.sender()) # 是主窗口
         self.SearchLineEdit.setText(a)
 

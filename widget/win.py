@@ -70,7 +70,8 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
 
     def close_new_win(self, flag):
         if self.son_win is not None:
-            self.son_win.close_s.emit()
+            self.son_win.close()
+            self.son_win = None
 
 
     def __del__(self):

@@ -337,8 +337,8 @@
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>88</x>
-     <y>85</y>
+     <x>99</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>88</x>
@@ -369,8 +369,8 @@
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>389</y>
+     <x>485</x>
+     <y>380</y>
     </hint>
     <hint type="destinationlabel">
      <x>355</x>
@@ -385,8 +385,8 @@
    <slot>setWindowTitle(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>474</x>
-     <y>386</y>
+     <x>485</x>
+     <y>380</y>
     </hint>
     <hint type="destinationlabel">
      <x>260</x>

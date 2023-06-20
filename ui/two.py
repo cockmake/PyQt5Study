@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form2(object):
     def setupUi(self, Form2):
         Form2.setObjectName("Form2")
-        Form2.resize(482, 310)
+        Form2.resize(564, 592)
         font = QtGui.QFont()
         font.setPointSize(11)
         Form2.setFont(font)
@@ -55,6 +55,15 @@ class Ui_Form2(object):
         self.pushButton = QtWidgets.QPushButton(Form2)
         self.pushButton.setGeometry(QtCore.QRect(380, 0, 101, 31))
         self.pushButton.setObjectName("pushButton")
+        self.ProgressRing_2 = ProgressRing(Form2)
+        self.ProgressRing_2.setGeometry(QtCore.QRect(60, 350, 100, 100))
+        self.ProgressRing_2.setObjectName("ProgressRing_2")
+        self.LineEdit = LineEdit(Form2)
+        self.LineEdit.setGeometry(QtCore.QRect(280, 280, 128, 33))
+        self.LineEdit.setObjectName("LineEdit")
+        self.TextEdit = TextEdit(Form2)
+        self.TextEdit.setGeometry(QtCore.QRect(210, 340, 256, 192))
+        self.TextEdit.setObjectName("TextEdit")
 
         self.retranslateUi(Form2)
         QtCore.QMetaObject.connectSlotsByName(Form2)
@@ -78,4 +87,4 @@ class Ui_Form2(object):
         item.setText(_translate("Form2", "6"))
         self.ListWidget.setSortingEnabled(__sortingEnabled)
         self.pushButton.setText(_translate("Form2", "点我也没用"))
-from qfluentwidgets import CalendarPicker, DateEdit, ListWidget, NavigationPanel, Pivot, ProgressRing, ZhDatePicker
+from qfluentwidgets import CalendarPicker, DateEdit, LineEdit, ListWidget, NavigationPanel, Pivot, ProgressRing, TextEdit, ZhDatePicker

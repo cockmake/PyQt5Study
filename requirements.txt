@@ -6,3 +6,5 @@ scipy
 pillow
 opencv-python
 qt_material
+darkdetect
+pyinstaller

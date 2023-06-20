@@ -9,7 +9,7 @@ from widget import win
 from qt_material import apply_stylesheet
 from PyQt5.QtCore import Qt
 # 画质和窗口问题
-# QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
 QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 if __name__ == '__main__':

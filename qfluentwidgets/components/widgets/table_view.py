@@ -225,7 +225,7 @@ class TableBase:
 
 
 class TableWidget(TableBase, QTableWidget):
-    """ Table widget """
+    """ Table widgets """
 
     def __init__(self, parent=None):
         super().__init__(parent)

@@ -91,7 +91,7 @@ class FlyoutView(FlyoutViewBase):
             whether to show the close button
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         self.icon = icon
         self.title = title
@@ -133,7 +133,7 @@ class FlyoutView(FlyoutViewBase):
         self.widgetLayout.setSpacing(0)
         self.vBoxLayout.setSpacing(0)
 
-        # add icon widget
+        # add icon widgets
         if not self.title or not self.content:
             self.iconWidget.setFixedHeight(36)
 
@@ -162,7 +162,7 @@ class FlyoutView(FlyoutViewBase):
         self._addImageToLayout()
 
     def addWidget(self, widget: QWidget, stretch=0, align=Qt.AlignLeft):
-        """ add widget to view """
+        """ add widgets to view """
         self.widgetLayout.addSpacing(8)
         self.widgetLayout.addWidget(widget, stretch, align)
 
@@ -237,7 +237,7 @@ class Flyout(QWidget):
             flyout view
 
         target: QWidget | QPoint
-            the target widget or position to show flyout
+            the target widgets or position to show flyout
 
         parent: QWidget
             parent window
@@ -284,7 +284,7 @@ class Flyout(QWidget):
             whether to show the close button
 
         target: QWidget | QPoint
-            the target widget or position to show flyout
+            the target widgets or position to show flyout
 
         parent: QWidget
             parent window

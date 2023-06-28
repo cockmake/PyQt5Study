@@ -72,7 +72,7 @@ class TreeViewBase:
 
 
 class TreeWidget(QTreeWidget, TreeViewBase):
-    """ Tree widget """
+    """ Tree widgets """
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)

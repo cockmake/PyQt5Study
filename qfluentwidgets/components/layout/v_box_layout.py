@@ -17,18 +17,18 @@ class VBoxLayout(QVBoxLayout):
             self.addWidget(widget, stretch, alignment)
 
     def addWidget(self, widget: QWidget, stretch=0, alignment=Qt.AlignTop):
-        """ add widget to layout """
+        """ add widgets to layout """
         super().addWidget(widget, stretch, alignment)
         self.widgets.append(widget)
         widget.show()
 
     def removeWidget(self, widget: QWidget):
-        """ remove widget from layout but not delete it """
+        """ remove widgets from layout but not delete it """
         super().removeWidget(widget)
         self.widgets.remove(widget)
 
     def deleteWidget(self, widget: QWidget):
-        """ remove widget from layout and delete it """
+        """ remove widgets from layout and delete it """
         self.removeWidget(widget)
         widget.hide()
         widget.deleteLater()

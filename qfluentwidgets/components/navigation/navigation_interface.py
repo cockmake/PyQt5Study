@@ -20,8 +20,8 @@ class NavigationInterface(QWidget):
         """
         Parameters
         ----------
-        parent: widget
-            parent widget
+        parent: widgets
+            parent widgets
 
         showMenuButton: bool
             whether to show menu button
@@ -79,7 +79,7 @@ class NavigationInterface(QWidget):
 
     def addWidget(self, routeKey: str, widget: NavigationWidget, onClick=None, position=NavigationItemPosition.TOP,
                   tooltip: str = None, parentRouteKey: str = None):
-        """ add custom widget
+        """ add custom widgets
 
         Parameters
         ----------
@@ -87,16 +87,16 @@ class NavigationInterface(QWidget):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
 
         position: NavigationItemPosition
-            where the widget is added
+            where the widgets is added
 
         tooltip: str
-            the tooltip of widget
+            the tooltip of widgets
 
         parentRouteKey: str
             the route key of parent item, the parent item should be `NavigationTreeWidgetBase`
@@ -143,7 +143,7 @@ class NavigationInterface(QWidget):
 
     def insertWidget(self, index: int, routeKey: str, widget: NavigationWidget, onClick=None,
                      position=NavigationItemPosition.TOP, tooltip: str = None, parentRouteKey: str = None):
-        """ insert custom widget
+        """ insert custom widgets
 
         Parameters
         ----------
@@ -154,16 +154,16 @@ class NavigationInterface(QWidget):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
 
         position: NavigationItemPosition
-            where the widget is added
+            where the widgets is added
 
         tooltip: str
-            the tooltip of widget
+            the tooltip of widgets
 
         parentRouteKey: str
             the route key of parent item, the parent item should be `NavigationTreeWidgetBase`
@@ -196,7 +196,7 @@ class NavigationInterface(QWidget):
         self.setMinimumHeight(self.panel.layoutMinHeight())
 
     def removeWidget(self, routeKey: str):
-        """ remove widget
+        """ remove widgets
 
         Parameters
         ----------

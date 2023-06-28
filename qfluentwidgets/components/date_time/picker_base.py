@@ -13,7 +13,7 @@ from ...common.style_sheet import FluentStyleSheet, themeColor, isDarkTheme
 
 
 class SeparatorWidget(QWidget):
-    """ Separator widget """
+    """ Separator widgets """
 
     def __init__(self, orient: Qt.Orientation, parent=None):
         super().__init__(parent=parent)
@@ -27,7 +27,7 @@ class SeparatorWidget(QWidget):
 
 
 class ItemMaskWidget(QWidget):
-    """ Item mask widget """
+    """ Item mask widgets """
 
     def __init__(self, listWidgets: List[CycleListWidget], parent=None):
         super().__init__(parent=parent)
@@ -513,7 +513,7 @@ class PickerPanel(QWidget):
         self.listWidgets[index].setSelectedItem(value)
 
     def column(self, index: int):
-        """ return the list widget of specified column """
+        """ return the list widgets of specified column """
         return self.listWidgets[index]
 
     def exec(self, pos, ani=True):

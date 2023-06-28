@@ -121,7 +121,7 @@ class TeachingTip(QWidget):
         Parameters
         ----------
         target: QWidget
-            the target widget to show tip
+            the target widgets to show tip
 
         view: FlyoutViewBase
             teaching tip view
@@ -134,7 +134,7 @@ class TeachingTip(QWidget):
             the position of bubble tail
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent=parent)
         self.target = target
@@ -194,7 +194,7 @@ class TeachingTip(QWidget):
         return super().eventFilter(obj, e)
 
     def addWidget(self, widget: QWidget, stretch=0, align=Qt.AlignLeft):
-        """ add widget to teaching tip """
+        """ add widgets to teaching tip """
         self.view.addSpacing(8)
         self.view.addWidget(widget, stretch, align)
 
@@ -215,7 +215,7 @@ class TeachingTip(QWidget):
             teaching tip view
 
         target: QWidget
-            the target widget to show tip
+            the target widgets to show tip
 
         duration: int
             the time for teaching tip to display in milliseconds. If duration is less than zero,
@@ -225,7 +225,7 @@ class TeachingTip(QWidget):
             the position of bubble tail
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         w = TeachingTip(view, target, duration, tailPosition, parent)
         w.show()
@@ -239,7 +239,7 @@ class TeachingTip(QWidget):
         Parameters
         ----------
         target: QWidget
-            the target widget to show tip
+            the target widgets to show tip
 
         title: str
             the title of teaching tip
@@ -261,7 +261,7 @@ class TeachingTip(QWidget):
             teaching tip will never disappear.
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         view = TeachingTipView(title, content, icon, image, isClosable, tailPosition)
         w = cls.make(view, target, duration, tailPosition, parent)

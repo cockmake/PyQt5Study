@@ -14,7 +14,7 @@ class ViewPlugin(PluginBase):
 
 
 class ListWidgetPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
-    """ List widget plugin """
+    """ List widgets plugin """
 
     def createWidget(self, parent):
         return ListWidget(parent)
@@ -40,7 +40,7 @@ class ListViewPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
 
 
 class TableWidgetPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
-    """ Table widget plugin """
+    """ Table widgets plugin """
 
     def createWidget(self, parent):
         return TableWidget(parent)
@@ -53,7 +53,7 @@ class TableWidgetPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
 
 
 class TableViewPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
-    """ Table widget plugin """
+    """ Table widgets plugin """
 
     def createWidget(self, parent):
         return TableView(parent)
@@ -66,7 +66,7 @@ class TableViewPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
 
 
 class TreeWidgetPlugin(ViewPlugin, QPyDesignerCustomWidgetPlugin):
-    """ Tree widget plugin """
+    """ Tree widgets plugin """
 
     def createWidget(self, parent):
         return TreeWidget(parent)

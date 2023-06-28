@@ -33,7 +33,7 @@ class SegmentedItem(PivotItem):
 
 
 class SegmentedWidget(Pivot):
-    """ Segmented widget """
+    """ Segmented widgets """
 
     def __init__(self, parent=None):
         super().__init__(parent)

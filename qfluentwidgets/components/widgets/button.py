@@ -468,7 +468,7 @@ class PrimarySplitDropButton(PrimaryToolButton):
 
 
 class SplitWidgetBase(QWidget):
-    """ Split widget base class """
+    """ Split widgets base class """
 
     dropDownClicked = pyqtSignal()
 
@@ -489,7 +489,7 @@ class SplitWidgetBase(QWidget):
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
 
     def setWidget(self, widget: QWidget):
-        """ set the widget on left side """
+        """ set the widgets on left side """
         self.hBoxLayout.insertWidget(0, widget, 1, Qt.AlignLeft)
 
     def setDropButton(self, button):
@@ -503,12 +503,12 @@ class SplitWidgetBase(QWidget):
         self.hBoxLayout.addWidget(button)
 
     def setFlyout(self, flyout):
-        """ set the widget pops up when drop down button is clicked
+        """ set the widgets pops up when drop down button is clicked
 
         Parameters
         ----------
         flyout: QWidget
-            the widget pops up when drop down button is clicked.
+            the widgets pops up when drop down button is clicked.
             It should contain the `exec` method, whose first parameter type is `QPoint`
         """
         self.flyout = flyout

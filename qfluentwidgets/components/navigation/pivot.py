@@ -93,7 +93,7 @@ class Pivot(QWidget):
         return self.insertItem(-1, routeKey, text, onClick, icon)
 
     def addWidget(self, routeKey: str, widget: PivotItem, onClick=None):
-        """ add widget
+        """ add widgets
 
         Parameters
         ----------
@@ -101,7 +101,7 @@ class Pivot(QWidget):
             the unique name of item
 
         widget: PivotItem
-            navigation widget
+            navigation widgets
 
         onClick: callable
             the slot connected to item clicked signal
@@ -150,7 +150,7 @@ class Pivot(QWidget):
             the unique name of item
 
         widget: PivotItem
-            navigation widget
+            navigation widgets
 
         onClick: callable
             the slot connected to item clicked signal
@@ -167,7 +167,7 @@ class Pivot(QWidget):
         self.hBoxLayout.insertWidget(index, widget, 1)
 
     def removeWidget(self, routeKey: str):
-        """ remove widget
+        """ remove widgets
 
         Parameters
         ----------

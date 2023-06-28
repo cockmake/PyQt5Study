@@ -49,7 +49,7 @@ class ScrollButton(QToolButton):
 
 
 class CycleListWidget(QListWidget):
-    """ Cycle list widget """
+    """ Cycle list widgets """
 
     currentItemChanged = pyqtSignal(QListWidgetItem)
 
@@ -67,7 +67,7 @@ class CycleListWidget(QListWidget):
             the text alignment of item
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent=parent)
         self.itemSize = itemSize

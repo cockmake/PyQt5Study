@@ -25,11 +25,11 @@ class TextPlugin(BasicInputPlugin):
 
     def domXml(self):
         return f"""
-        <widget class="{self.name()}" name="{self.name()}">
+        <widgets class="{self.name()}" name="{self.name()}">
             <property name="text">
                 <string>{self.toolTip()}</string>
             </property>
-        </widget>
+        </widgets>
         """
 
 
@@ -152,11 +152,11 @@ class SplitPushButtonPlugin(BasicInputPlugin, QPyDesignerCustomWidgetPlugin):
 
     def domXml(self):
         return f"""
-        <widget class="{self.name()}" name="{self.name()}">
+        <widgets class="{self.name()}" name="{self.name()}">
             <property name="text_">
                 <string>{self.toolTip()}</string>
             </property>
-        </widget>
+        </widgets>
         """
 
 
@@ -175,11 +175,11 @@ class PrimarySplitPushButtonPlugin(BasicInputPlugin, QPyDesignerCustomWidgetPlug
 
     def domXml(self):
         return f"""
-        <widget class="{self.name()}" name="{self.name()}">
+        <widgets class="{self.name()}" name="{self.name()}">
             <property name="text_">
                 <string>{self.toolTip()}</string>
             </property>
-        </widget>
+        </widgets>
         """
 
 
@@ -331,7 +331,7 @@ class SliderPlugin(BasicInputPlugin, QPyDesignerCustomWidgetPlugin):
 
 
 class IconWidgetPlugin(BasicInputPlugin, QPyDesignerCustomWidgetPlugin):
-    """ Icon widget plugin """
+    """ Icon widgets plugin """
 
     def createWidget(self, parent):
         return IconWidget(FluentIcon.EMOJI_TAB_SYMBOLS, parent)

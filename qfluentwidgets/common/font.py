@@ -4,12 +4,12 @@ from PyQt5.QtWidgets import QWidget
 
 
 def setFont(widget: QWidget, fontSize=14, weight=QFont.Normal):
-    """ set the font of widget
+    """ set the font of widgets
 
     Parameters
     ----------
     widget: QWidget
-        the widget to set font
+        the widgets to set font
 
     fontSize: int
         font pixel size

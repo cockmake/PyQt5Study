@@ -139,7 +139,7 @@ class SwitchButton(QWidget):
         Parameters
         ----------
         parent: QWidget
-            parent widget
+            parent widgets
 
         indicatorPosition: IndicatorPosition
             the position of indicator
@@ -164,7 +164,7 @@ class SwitchButton(QWidget):
             the text of switch button
 
         parent: QWidget
-            parent widget
+            parent widgets
 
         indicatorPosition: IndicatorPosition
             the position of indicator

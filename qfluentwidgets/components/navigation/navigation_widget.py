@@ -14,7 +14,7 @@ from ...common.font import setFont
 
 
 class NavigationWidget(QWidget):
-    """ Navigation widget """
+    """ Navigation widgets """
 
     clicked = pyqtSignal(bool)  # whether triggered by the user
     EXPAND_WIDTH = 312
@@ -49,7 +49,7 @@ class NavigationWidget(QWidget):
         self.clicked.emit(True)
 
     def setCompacted(self, isCompacted: bool):
-        """ set whether the widget is compacted """
+        """ set whether the widgets is compacted """
         if isCompacted == self.isCompacted:
             return
 
@@ -191,7 +191,7 @@ class NavigationSeparator(NavigationWidget):
 
 
 class NavigationTreeItem(NavigationPushButton):
-    """ Navigation tree item widget """
+    """ Navigation tree item widgets """
 
     itemClicked = pyqtSignal(bool, bool)    # triggerByUser, clickArrow
 
@@ -256,7 +256,7 @@ class NavigationTreeItem(NavigationPushButton):
 
 
 class NavigationTreeWidgetBase(NavigationWidget):
-    """ Navigation tree widget base class """
+    """ Navigation tree widgets base class """
 
     def addChild(self, child):
         """ add child
@@ -312,7 +312,7 @@ class NavigationTreeWidgetBase(NavigationWidget):
 
 
 class NavigationTreeWidget(NavigationTreeWidgetBase):
-    """ Navigation tree widget """
+    """ Navigation tree widgets """
 
     def __init__(self, icon: Union[str, QIcon, FIF], text: str, isSelectable: bool, parent=None):
         super().__init__(isSelectable, parent)
@@ -366,7 +366,7 @@ class NavigationTreeWidget(NavigationTreeWidgetBase):
         if index < 0:
             index = len(self.treeChildren)
 
-        index += 1  # item widget should always be the first
+        index += 1  # item widgets should always be the first
         self.treeChildren.insert(index, child)
         self.vBoxLayout.insertWidget(index, child, 0, Qt.AlignTop)
 
@@ -428,7 +428,7 @@ class NavigationTreeWidget(NavigationTreeWidgetBase):
 
 
 class NavigationAvatarWidget(NavigationWidget):
-    """ Avatar widget """
+    """ Avatar widgets """
 
     def __init__(self, name: str, avatar: Union[str, QPixmap, QImage], parent=None):
         super().__init__(isSelectable=False, parent=parent)

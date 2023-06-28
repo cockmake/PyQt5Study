@@ -33,7 +33,7 @@ class ToolTip(QFrame):
             the text of tool tip
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent=parent)
         self.__text = text
@@ -119,7 +119,7 @@ class ToolTip(QFrame):
         super().hideEvent(e)
 
     def adjustPos(self, widget, position: ToolTipPosition):
-        """ adjust the position of tooltip relative to widget """
+        """ adjust the position of tooltip relative to widgets """
         manager = ToolTipPositionManager.make(position)
         self.move(manager.position(self, widget))
 
@@ -250,7 +250,7 @@ class ToolTipFilter(QObject):
         Parameters
         ----------
         parent: QWidget
-            the widget to install tool tip
+            the widgets to install tool tip
 
         showDelay: int
             show tool tip after how long the mouse hovers in milliseconds

@@ -187,7 +187,7 @@ class SvgTitleBarButton(TitleBarButton):
             the path of icon
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent)
         self._svgDom = QDomDocument()

@@ -24,7 +24,7 @@ class SingleDirectionScrollArea(QScrollArea):
         Parameters
         ----------
         parent: QWidget
-            parent widget
+            parent widgets
 
         orient: Orientation
             scroll orientation

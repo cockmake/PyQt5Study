@@ -228,7 +228,7 @@ class ColorDialog(MaskDialogBase):
             the title of dialog
 
         parent: QWidget
-            parent widget
+            parent widgets
 
         enableAlpha: bool
             whether to enable the alpha channel

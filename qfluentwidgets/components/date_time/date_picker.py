@@ -70,7 +70,7 @@ class DatePicker(DatePickerBase):
         Parameters
         ----------
         parent: QWidget
-            parent widget
+            parent widgets
 
         format: int
             the format of date, could be `DatePicker.MM_DD_YYYY` or `DatePicker.YYYY_MM_DD`

@@ -18,7 +18,7 @@ class StyleSheetManager(QObject):
         self.widgets = weakref.WeakKeyDictionary()
 
     def register(self, file: str, widget: QWidget):
-        """ register widget to manager
+        """ register widgets to manager
 
         Parameters
         ----------
@@ -26,7 +26,7 @@ class StyleSheetManager(QObject):
             qss file path
 
         widget: QWidget
-            the widget to set style sheet
+            the widgets to set style sheet
         """
         if widget not in self.widgets:
             widget.destroyed.connect(self.deregister)
@@ -34,7 +34,7 @@ class StyleSheetManager(QObject):
         self.widgets[widget] = file
 
     def deregister(self, widget: QWidget):
-        """ deregister widget from manager """
+        """ deregister widgets from manager """
         if widget not in self.widgets:
             return
 
@@ -79,7 +79,7 @@ class StyleSheetBase:
         return getStyleSheet(self, theme)
 
     def apply(self, widget: QWidget, theme=Theme.AUTO):
-        """ apply style sheet to widget """
+        """ apply style sheet to widgets """
         setStyleSheet(widget, self, theme)
 
 
@@ -142,12 +142,12 @@ def getStyleSheet(file: Union[str, StyleSheetBase], theme=Theme.AUTO):
 
 
 def setStyleSheet(widget, file: Union[str, StyleSheetBase], theme=Theme.AUTO, register=True):
-    """ set the style sheet of widget
+    """ set the style sheet of widgets
 
     Parameters
     ----------
     widget: QWidget
-        the widget to set style sheet
+        the widgets to set style sheet
 
     file: str | StyleSheetBase
         qss file
@@ -156,8 +156,8 @@ def setStyleSheet(widget, file: Union[str, StyleSheetBase], theme=Theme.AUTO, re
         the theme of style sheet
 
     register: bool
-        whether to register the widget to the style manager. If `register=True`, the style of
-        the widget will be updated automatically when the theme changes
+        whether to register the widgets to the style manager. If `register=True`, the style of
+        the widgets will be updated automatically when the theme changes
     """
     if register:
         styleSheetManager.register(file, widget)

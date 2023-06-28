@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QGraphicsOpacityEffect, QStackedWidget, QWidget
 
 
 class OpacityAniStackedWidget(QStackedWidget):
-    """ Stacked widget with fade in and fade out animation """
+    """ Stacked widgets with fade in and fade out animation """
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)
@@ -64,7 +64,7 @@ class PopUpAniInfo:
 
 
 class PopUpAniStackedWidget(QStackedWidget):
-    """ Stacked widget with pop up animation """
+    """ Stacked widgets with pop up animation """
 
     aniFinished = pyqtSignal()
     aniStart = pyqtSignal()
@@ -76,12 +76,12 @@ class PopUpAniStackedWidget(QStackedWidget):
         self._ani = None
 
     def addWidget(self, widget, deltaX=0, deltaY=76):
-        """ add widget to window
+        """ add widgets to window
 
         Parameters
         -----------
         widget:
-            widget to be added
+            widgets to be added
 
         deltaX: int
             the x-axis offset from the beginning to the end of animation
@@ -105,13 +105,13 @@ class PopUpAniStackedWidget(QStackedWidget):
         Parameters
         ----------
         index: int
-            the index of widget to display
+            the index of widgets to display
 
         isNeedPopOut: bool
             need pop up animation or not
 
         showNextWidgetDirectly: bool
-            whether to show next widget directly when animation started
+            whether to show next widgets directly when animation started
 
         duration: int
             animation duration
@@ -129,7 +129,7 @@ class PopUpAniStackedWidget(QStackedWidget):
             self._ani.stop()
             self.__onAniFinished()
 
-        # get the index of widget to be displayed
+        # get the index of widgets to be displayed
         self._nextIndex = index
 
         # get animation
@@ -159,18 +159,18 @@ class PopUpAniStackedWidget(QStackedWidget):
 
     def setCurrentWidget(self, widget, needPopOut: bool = False, showNextWidgetDirectly: bool = True,
                          duration: int = 250, easingCurve=QEasingCurve.OutQuad):
-        """ set currect widget
+        """ set currect widgets
 
         Parameters
         ----------
         widget:
-            the widget to be displayed
+            the widgets to be displayed
 
         isNeedPopOut: bool
             need pop up animation or not
 
         showNextWidgetDirectly: bool
-            whether to show next widget directly when animation started
+            whether to show next widgets directly when animation started
 
         duration: int
             animation duration

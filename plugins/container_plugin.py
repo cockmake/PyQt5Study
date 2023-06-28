@@ -51,12 +51,12 @@ class ScrollAreaPluginBase(ContainerPlugin):
 
     def domXml(self):
         return f"""
-            <widget class="{self.name()}" name="{self.name()}">
+            <widgets class="{self.name()}" name="{self.name()}">
                 <property name="widgetResizable">
                     <bool>true</bool>
                 </property>
-                <widget class="QWidget" name="scrollAreaWidgetContents" />
-            </widget>
+                <widgets class="QWidget" name="scrollAreaWidgetContents" />
+            </widgets>
         """
 
 
@@ -106,9 +106,9 @@ class StackedWidgetPlugin(ContainerPlugin):
 
     def domXml(self):
         return f"""
-            <widget class="{self.name()}" name="{self.name()}">'
-                <widget class="QWidget" name="page" />'
-            </widget>
+            <widgets class="{self.name()}" name="{self.name()}">'
+                <widgets class="QWidget" name="page" />'
+            </widgets>
         """
 
     def onCurrentIndexChanged(self, index):
@@ -119,7 +119,7 @@ class StackedWidgetPlugin(ContainerPlugin):
 
 
 class StackedWidgetExtension(QPyDesignerContainerExtension):
-    """ Stacked widget extension """
+    """ Stacked widgets extension """
 
     def __init__(self, stacked, parent=None) -> None:
         super().__init__(parent)
@@ -148,7 +148,7 @@ class StackedWidgetExtension(QPyDesignerContainerExtension):
 
 
 class StackedWidgetExtensionFactory(QExtensionFactory):
-    """ Stacked widget extension factory """
+    """ Stacked widgets extension factory """
 
     widgets = []
     IID = "org.qt-project.Qt.Designer.Container"
@@ -173,7 +173,7 @@ class StackedWidgetExtensionFactory(QExtensionFactory):
 
 @StackedWidgetExtensionFactory.register
 class OpacityAniStackedWidgetPlugin(StackedWidgetPlugin, QPyDesignerCustomWidgetPlugin):
-    """ opacity ani stacked widget plugin """
+    """ opacity ani stacked widgets plugin """
 
     def createWidget(self, parent):
         w = OpacityAniStackedWidget(parent)
@@ -189,7 +189,7 @@ class OpacityAniStackedWidgetPlugin(StackedWidgetPlugin, QPyDesignerCustomWidget
 
 @StackedWidgetExtensionFactory.register
 class PopUpAniStackedWidgetPlugin(StackedWidgetPlugin, QPyDesignerCustomWidgetPlugin):
-    """ pop up ani stacked widget plugin """
+    """ pop up ani stacked widgets plugin """
 
     def createWidget(self, parent):
         w = PopUpAniStackedWidget(parent)

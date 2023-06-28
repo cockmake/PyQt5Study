@@ -7,7 +7,7 @@ from ..components.widgets.stacked_widget import PopUpAniStackedWidget
 
 
 class StackedWidget(QFrame):
-    """ Stacked widget """
+    """ Stacked widgets """
 
     currentChanged = pyqtSignal(int)
 
@@ -23,7 +23,7 @@ class StackedWidget(QFrame):
         self.setAttribute(Qt.WA_StyledBackground)
 
     def addWidget(self, widget):
-        """ add widget to view """
+        """ add widgets to view """
         self.view.addWidget(widget)
 
     def widget(self, index: int):

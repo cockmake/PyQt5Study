@@ -82,7 +82,7 @@ class SubMenuItemWidget(QWidget):
             menu item
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent)
         self.menu = menu
@@ -122,7 +122,7 @@ class MenuItemDelegate(QStyledItemDelegate):
 
 
 class MenuActionListWidget(QListWidget):
-    """ Menu action list widget """
+    """ Menu action list widgets """
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -167,7 +167,7 @@ class MenuActionListWidget(QListWidget):
         w, h = MenuAnimationManager.make(self, aniType).availableViewSize(pos)
         self.viewport().adjustSize()
 
-        # adjust the height of list widget
+        # adjust the height of list widgets
         m = self.viewportMargins()
         size += QSize(m.left()+m.right()+2, m.top()+m.bottom())
         size.setHeight(min(h, size.height()+3))
@@ -374,7 +374,7 @@ class RoundMenu(QWidget):
         item = self.view.takeItem(index)
         item.setData(Qt.UserRole, None)
 
-        # delete widget
+        # delete widgets
         widget = self.view.itemWidget(item)
         if widget:
             widget.deleteLater()
@@ -462,7 +462,7 @@ class RoundMenu(QWidget):
         m = self.view.viewportMargins()
         w = self.view.width()-m.left()-m.right()
 
-        # add separator to list widget
+        # add separator to list widgets
         item = QListWidgetItem(self.view)
         item.setFlags(Qt.NoItemFlags)
         item.setSizeHint(QSize(w, 9))

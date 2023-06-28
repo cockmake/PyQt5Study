@@ -173,7 +173,7 @@ class NavigationBar(QWidget):
         return self.insertItem(-1, routeKey, icon, text, onClick, selectable, selectedIcon, position)
 
     def addWidget(self, routeKey: str, widget: NavigationWidget, onClick=None, position=NavigationItemPosition.TOP):
-        """ add custom widget
+        """ add custom widgets
 
         Parameters
         ----------
@@ -181,7 +181,7 @@ class NavigationBar(QWidget):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
@@ -198,7 +198,7 @@ class NavigationBar(QWidget):
         Parameters
         ----------
         index: int
-            the insert position of parent widget
+            the insert position of parent widgets
 
         routeKey: str
             the unique name of item
@@ -230,7 +230,7 @@ class NavigationBar(QWidget):
 
     def insertWidget(self, index: int, routeKey: str, widget: NavigationWidget, onClick=None,
                      position=NavigationItemPosition.TOP):
-        """ insert custom widget
+        """ insert custom widgets
 
         Parameters
         ----------
@@ -241,7 +241,7 @@ class NavigationBar(QWidget):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
@@ -256,7 +256,7 @@ class NavigationBar(QWidget):
         self._insertWidgetToLayout(index, widget, position)
 
     def _registerWidget(self, routeKey: str, widget: NavigationWidget, onClick):
-        """ register widget """
+        """ register widgets """
         widget.clicked.connect(self._onWidgetClicked)
 
         if onClick is not None:
@@ -266,7 +266,7 @@ class NavigationBar(QWidget):
         self.items[routeKey] = widget
 
     def _insertWidgetToLayout(self, index: int, widget: NavigationWidget, position: NavigationItemPosition):
-        """ insert widget to layout """
+        """ insert widgets to layout """
         if position == NavigationItemPosition.TOP:
             widget.setParent(self)
             self.topLayout.insertWidget(index, widget, 0, Qt.AlignTop)
@@ -280,7 +280,7 @@ class NavigationBar(QWidget):
         widget.show()
 
     def removeWidget(self, routeKey: str):
-        """ remove widget
+        """ remove widgets
 
         Parameters
         ----------

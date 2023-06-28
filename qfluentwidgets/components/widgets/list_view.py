@@ -92,7 +92,7 @@ class ListBase:
 
 
 class ListWidget(ListBase, QListWidget):
-    """ List widget """
+    """ List widgets """
 
     def __init__(self, parent=None):
         super().__init__(parent)

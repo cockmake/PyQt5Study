@@ -127,7 +127,7 @@ class ExpandSettingCard(QFrame):
         self.expandButton.clicked.connect(self.toggleExpand)
 
     def addWidget(self, widget: QWidget):
-        """ add widget to tail """
+        """ add widgets to tail """
         self.card.hBoxLayout.addWidget(widget, 0, Qt.AlignRight)
         self.card.hBoxLayout.addSpacing(19)
         self.card.hBoxLayout.addWidget(self.expandButton, 0, Qt.AlignRight)
@@ -223,7 +223,7 @@ class ExpandGroupSettingCard(ExpandSettingCard):
     """ Expand group setting card """
 
     def addGroupWidget(self, widget: QWidget):
-        """ add widget to group """
+        """ add widgets to group """
         if widget in self.viewLayout.widgets:
             return
 

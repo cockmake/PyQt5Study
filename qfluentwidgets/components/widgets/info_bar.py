@@ -46,7 +46,7 @@ class InfoBarPosition(Enum):
 
 
 class InfoIconWidget(QWidget):
-    """ Icon widget """
+    """ Icon widgets """
 
     def __init__(self, icon: InfoBarIcon, parent=None):
         super().__init__(parent=parent)
@@ -96,7 +96,7 @@ class InfoBar(QFrame):
             info bar will never disappear.
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent=parent)
         self.title = title
@@ -164,7 +164,7 @@ class InfoBar(QFrame):
         self.contentLabel.setVisible(bool(self.content))
         self.hBoxLayout.addLayout(self.textLayout)
 
-        # add widget layout
+        # add widgets layout
         if self.orient == Qt.Horizontal:
             self.hBoxLayout.addLayout(self.widgetLayout)
             self.widgetLayout.setSpacing(10)
@@ -206,7 +206,7 @@ class InfoBar(QFrame):
         self.adjustSize()
 
     def addWidget(self, widget: QWidget, stretch=0):
-        """ add widget to info bar """
+        """ add widgets to info bar """
         self.widgetLayout.addSpacing(6)
         align = Qt.AlignTop if self.orient == Qt.Vertical else Qt.AlignVCenter
         self.widgetLayout.addWidget(widget, stretch, Qt.AlignLeft | align)

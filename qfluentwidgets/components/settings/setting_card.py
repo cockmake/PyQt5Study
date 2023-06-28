@@ -34,7 +34,7 @@ class SettingCard(QFrame):
             the content of card
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(parent=parent)
         self.iconLabel = IconWidget(icon, self)
@@ -107,7 +107,7 @@ class SwitchSettingCard(SettingCard):
             configuration item operated by the card
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(icon, title, content, parent)
         self.configItem = configItem
@@ -163,7 +163,7 @@ class RangeSettingCard(SettingCard):
             the content of card
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(icon, title, content, parent)
         self.configItem = configItem
@@ -219,7 +219,7 @@ class PushSettingCard(SettingCard):
             the content of card
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(icon, title, content, parent)
         self.button = QPushButton(text, self)
@@ -262,7 +262,7 @@ class HyperlinkCard(SettingCard):
             the text of push button
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(icon, title, content, parent)
         self.linkButton = HyperlinkButton(url, text, self)
@@ -340,7 +340,7 @@ class ColorSettingCard(SettingCard):
             the content of card
 
         parent: QWidget
-            parent widget
+            parent widgets
 
         enableAlpha: bool
             whether to enable the alpha channel
@@ -386,7 +386,7 @@ class ComboBoxSettingCard(SettingCard):
             the text of items
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(icon, title, content, parent)
         self.configItem = configItem

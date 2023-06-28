@@ -54,7 +54,7 @@ class SpinButton(QToolButton):
 
 
 class SpinBoxBase:
-    """ Spin box ui """
+    """ Spin box pages """
 
     def __init__(self, parent=None):
         super().__init__(parent=parent)

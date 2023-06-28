@@ -78,7 +78,7 @@ def getMonitorInfo(hWnd, dwFlags):
 
 
 def getResizeBorderThickness(hWnd, horizontal=True):
-    """ get resize border thickness of widget
+    """ get resize border thickness of widgets
 
     Parameters
     ----------

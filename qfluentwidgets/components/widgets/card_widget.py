@@ -7,7 +7,7 @@ from ...common.style_sheet import isDarkTheme
 
 
 class CardWidget(QFrame):
-    """ Card widget """
+    """ Card widgets """
 
     clicked = pyqtSignal()
 

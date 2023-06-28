@@ -114,7 +114,7 @@ class FolderListSettingCard(ExpandSettingCard):
             working directory of file dialog
 
         parent: QWidget
-            parent widget
+            parent widgets
         """
         super().__init__(FIF.FOLDER, title, content, parent)
         self.configItem = configItem

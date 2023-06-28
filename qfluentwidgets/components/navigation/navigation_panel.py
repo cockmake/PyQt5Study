@@ -180,13 +180,13 @@ class NavigationPanel(QFrame):
             the tooltip of item
 
         parentRouteKey: str
-            the route key of parent item, the parent widget should be `NavigationTreeWidget`
+            the route key of parent item, the parent widgets should be `NavigationTreeWidget`
         """
         return self.insertItem(-1, routeKey, icon, text, onClick, selectable, position, tooltip, parentRouteKey)
 
     def addWidget(self, routeKey: str, widget: NavigationWidget, onClick=None, position=NavigationItemPosition.TOP,
                   tooltip: str = None, parentRouteKey: str = None):
-        """ add custom widget
+        """ add custom widgets
 
         Parameters
         ----------
@@ -194,7 +194,7 @@ class NavigationPanel(QFrame):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
@@ -203,7 +203,7 @@ class NavigationPanel(QFrame):
             where the button is added
 
         tooltip: str
-            the tooltip of widget
+            the tooltip of widgets
 
         parentRouteKey: str
             the route key of parent item, the parent item should be `NavigationTreeWidget`
@@ -217,7 +217,7 @@ class NavigationPanel(QFrame):
         Parameters
         ----------
         index: int
-            the insert position of parent widget
+            the insert position of parent widgets
 
         routeKey: str
             the unique name of item
@@ -252,7 +252,7 @@ class NavigationPanel(QFrame):
 
     def insertWidget(self, index: int, routeKey: str, widget: NavigationWidget, onClick=None,
                      position=NavigationItemPosition.TOP, tooltip: str = None, parentRouteKey: str = None):
-        """ insert custom widget
+        """ insert custom widgets
 
         Parameters
         ----------
@@ -263,7 +263,7 @@ class NavigationPanel(QFrame):
             the unique name of item
 
         widget: NavigationWidget
-            the custom widget to be added
+            the custom widgets to be added
 
         onClick: callable
             the slot connected to item clicked signal
@@ -272,7 +272,7 @@ class NavigationPanel(QFrame):
             where the button is added
 
         tooltip: str
-            the tooltip of widget
+            the tooltip of widgets
 
         parentRouteKey: str
             the route key of parent item, the parent item should be `NavigationTreeWidget`
@@ -311,7 +311,7 @@ class NavigationPanel(QFrame):
         self._insertWidgetToLayout(index, separator, position)
 
     def _registerWidget(self, routeKey: str, parentRouteKey: str, widget: NavigationWidget, onClick, tooltip: str):
-        """ register widget """
+        """ register widgets """
         widget.clicked.connect(self._onWidgetClicked)
 
         if onClick is not None:
@@ -329,7 +329,7 @@ class NavigationPanel(QFrame):
             widget.installEventFilter(NavigationToolTipFilter(widget, 1000))
 
     def _insertWidgetToLayout(self, index: int, widget: NavigationWidget, position: NavigationItemPosition):
-        """ insert widget to layout """
+        """ insert widgets to layout """
         if position == NavigationItemPosition.TOP:
             widget.setParent(self)
             self.topLayout.insertWidget(index, widget, 0, Qt.AlignTop)
@@ -343,7 +343,7 @@ class NavigationPanel(QFrame):
         widget.show()
 
     def removeWidget(self, routeKey: str):
-        """ remove widget
+        """ remove widgets
 
         Parameters
         ----------
@@ -529,7 +529,7 @@ class NavigationPanel(QFrame):
                 self.show()
 
     def _setWidgetCompacted(self, isCompacted: bool):
-        """ set whether the navigation widget is compacted """
+        """ set whether the navigation widgets is compacted """
         for item in self.findChildren(NavigationWidget):
             item.setCompacted(isCompacted)
 

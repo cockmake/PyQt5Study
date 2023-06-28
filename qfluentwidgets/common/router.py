@@ -80,7 +80,7 @@ class Router(QObject):
         self.stackHistories = {}  # type: Dict[QStackedWidget, StackedHistory]
 
     def setDefaultRouteKey(self, stacked: QStackedWidget, routeKey: str):
-        """ set the default route key of stacked widget """
+        """ set the default route key of stacked widgets """
         if stacked not in self.stackHistories:
             self.stackHistories[stacked] = StackedHistory(stacked)
 
@@ -92,7 +92,7 @@ class Router(QObject):
         Parameters
         ----------
         stacked: QStackedWidget
-            stacked widget
+            stacked widgets
 
         routeKey: str
             route key of sub insterface, it should be the object name of sub interface

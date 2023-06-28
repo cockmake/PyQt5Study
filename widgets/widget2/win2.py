@@ -16,9 +16,8 @@ from qfluentwidgets import (NavigationBar, NavigationItemPosition, MessageBox,
 from qframelesswindow.windows import WindowsFramelessWindow, TitleBar
 from ui import two
 from PyQt5 import QtGui
-
-from widgets.widget import win
-
+from utils import stop_thread
+from utils.MThreading import MThread
 
 class Widget(QWidget):
     def __init__(self, text: str, parent=None):
@@ -60,11 +59,6 @@ class StackedWidget(QFrame):
 
     def setCurrentIndex(self, index, popOut=False):
         self.setCurrentWidget(self.view.widget(index), popOut)
-
-def aa():
-    while 1:
-        print(1)
-        time.sleep(0.5)
 
 class CustomTitleBar(TitleBar):
     """ Title bar with icon and title """
@@ -118,6 +112,8 @@ class CustomTitleBar(TitleBar):
     def resizeEvent(self, e):
         self.searchLineEdit.move((self.width() - self.searchLineEdit.width()) // 2, 8)
 
+
+
 class Win2(WindowsFramelessWindow, two.Ui_Form2):
     close_s = pyqtSignal()
     
@@ -147,6 +143,8 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
         self.initNavigation()
 
         self.initWindow()
+        self.th = MThread()
+        self.th.start()
         print('子窗口被创建了')
 
     def initLayout(self):
@@ -229,8 +227,11 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         print('开始释放子窗口资源...')
-        # 释放完结束以后
+        self.th.stop_flag = True
+        # 释放完结束以后通知父窗口已经关闭 并调用deleteLater
         self.close_s.emit()
+        self.deleteLater()
+
 
     def initStyle(self):
         self.setStyleSheet('')

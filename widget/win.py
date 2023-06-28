@@ -5,12 +5,10 @@ from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt
 from PyQt5.QtWidgets import QDesktopWidget, QFileDialog
 from ui import one
 import cv2 as cv
-import os
 import utils
 from widget.win2 import Win2
 from widget.style import qss
 from PyQt5.QtGui import QPixmap, QWindow
-import gc
 # 窗口自己无法释放自己, 但是可以通过外部调用
 class Win(QtWidgets.QWidget, one.Ui_Form):
     # 自定义信号 在这

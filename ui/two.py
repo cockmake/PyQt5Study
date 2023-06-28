@@ -20,12 +20,6 @@ class Ui_Form2(object):
         Form2.setFont(font)
         self.horizontalLayout = QtWidgets.QHBoxLayout(Form2)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.NavigationInterface = NavigationInterface(Form2)
-        self.NavigationInterface.setObjectName("NavigationInterface")
-        self.horizontalLayout.addWidget(self.NavigationInterface)
-        self.LineEdit = LineEdit(Form2)
-        self.LineEdit.setObjectName("LineEdit")
-        self.horizontalLayout.addWidget(self.LineEdit)
 
         self.retranslateUi(Form2)
         QtCore.QMetaObject.connectSlotsByName(Form2)
@@ -33,4 +27,3 @@ class Ui_Form2(object):
     def retranslateUi(self, Form2):
         _translate = QtCore.QCoreApplication.translate
         Form2.setWindowTitle(_translate("Form2", "Form"))
-from qfluentwidgets import LineEdit, NavigationInterface

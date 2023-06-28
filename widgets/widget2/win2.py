@@ -1,18 +1,26 @@
 # coding:utf-8
+import os.path
+import random
 import sys
-
+import threading
+import time
+import gc
+import cv2 as cv
 from PyQt5.QtCore import Qt, pyqtSignal, QEasingCurve, QUrl
 from PyQt5.QtGui import QIcon, QDesktopServices
 from PyQt5.QtWidgets import QLabel, QHBoxLayout, QVBoxLayout, QApplication, QFrame, QWidget
 
-from qfluentwidgets import (NavigationBar, NavigationItemPosition, NavigationWidget, MessageBox,
-                            isDarkTheme, setTheme, Theme, setThemeColor, SearchLineEdit, PopUpAniStackedWidget)
 from qfluentwidgets import FluentIcon as FIF
-from qframelesswindow import FramelessWindow, TitleBar
+from qfluentwidgets import (NavigationBar, NavigationItemPosition, MessageBox,
+                            isDarkTheme, SearchLineEdit, PopUpAniStackedWidget)
+from qframelesswindow.windows import WindowsFramelessWindow, TitleBar
+from ui import two
+from PyQt5 import QtGui
+
+from widgets.widget import win
 
 
 class Widget(QWidget):
-
     def __init__(self, text: str, parent=None):
         super().__init__(parent=parent)
         self.label = QLabel(text, self)
@@ -20,7 +28,6 @@ class Widget(QWidget):
         self.hBoxLayout = QHBoxLayout(self)
         self.hBoxLayout.addWidget(self.label, 1, Qt.AlignCenter)
         self.setObjectName(text.replace(' ', '-'))
-
 
 class StackedWidget(QFrame):
     """ Stacked widget """
@@ -53,9 +60,14 @@ class StackedWidget(QFrame):
 
     def setCurrentIndex(self, index, popOut=False):
         self.setCurrentWidget(self.view.widget(index), popOut)
+
+def aa():
+    while 1:
+        print(1)
+        time.sleep(0.5)
+
 class CustomTitleBar(TitleBar):
     """ Title bar with icon and title """
-
     def __init__(self, parent):
         super().__init__(parent)
         self.setFixedHeight(48)
@@ -80,7 +92,7 @@ class CustomTitleBar(TitleBar):
 
         # add search line edit
         self.searchLineEdit = SearchLineEdit(self)
-        self.searchLineEdit.setPlaceholderText('搜索应用、游戏、电影、设备等')
+        self.searchLineEdit.setPlaceholderText('在这里搜索')
         self.searchLineEdit.setFixedWidth(400)
         self.searchLineEdit.setClearButtonEnabled(True)
 
@@ -104,10 +116,13 @@ class CustomTitleBar(TitleBar):
         self.iconLabel.setPixmap(QIcon(icon).pixmap(18, 18))
 
     def resizeEvent(self, e):
-        self.searchLineEdit.move((self.width() - self.searchLineEdit.width()) //2, 8)
+        self.searchLineEdit.move((self.width() - self.searchLineEdit.width()) // 2, 8)
 
-class Window(FramelessWindow):
+class Win2(WindowsFramelessWindow, two.Ui_Form2):
+    close_s = pyqtSignal()
+    
     def __init__(self, parent):
+        # super(Win2, self).__init__()
         super().__init__(parent)
         self.setTitleBar(CustomTitleBar(self))
         # use dark theme mode
@@ -119,7 +134,6 @@ class Window(FramelessWindow):
         self.hBoxLayout = QHBoxLayout(self)
         self.navigationBar = NavigationBar(self)
         self.stackWidget = StackedWidget(self)
-
         # create sub interface
         self.homeInterface = Widget('Home Interface', self)
         self.appInterface = Widget('Application Interface', self)
@@ -133,7 +147,7 @@ class Window(FramelessWindow):
         self.initNavigation()
 
         self.initWindow()
-
+        print('子窗口被创建了')
 
     def initLayout(self):
         self.hBoxLayout.setSpacing(0)
@@ -146,8 +160,9 @@ class Window(FramelessWindow):
         self.addSubInterface(self.homeInterface, FIF.HOME, '主页', selectedIcon=FIF.HOME_FILL)
         self.addSubInterface(self.appInterface, FIF.APPLICATION, '应用')
         self.addSubInterface(self.videoInterface, FIF.VIDEO, '视频')
+        self.addSubInterface(self.libraryInterface, FIF.BOOK_SHELF, '库', NavigationItemPosition.BOTTOM,
+                             FIF.LIBRARY_FILL)
 
-        self.addSubInterface(self.libraryInterface, FIF.BOOK_SHELF, '库', NavigationItemPosition.BOTTOM, FIF.LIBRARY_FILL)
         self.navigationBar.addItem(
             routeKey='Help',
             icon=FIF.HELP,
@@ -160,6 +175,7 @@ class Window(FramelessWindow):
         self.stackWidget.currentChanged.connect(self.onCurrentInterfaceChanged)
         self.navigationBar.setCurrentItem(self.homeInterface.objectName())
 
+
     def initWindow(self):
         self.resize(900, 700)
         self.setWindowIcon(QIcon(':/qfluentwidgets/images/logo.png'))
@@ -168,7 +184,7 @@ class Window(FramelessWindow):
 
         desktop = QApplication.desktop().availableGeometry()
         w, h = desktop.width(), desktop.height()
-        self.move(w//2 - self.width()//2, h//2 - self.height()//2)
+        self.move(w // 2 - self.width() // 2, h // 2 - self.height() // 2)
 
         self.setQss()
 
@@ -186,7 +202,7 @@ class Window(FramelessWindow):
 
     def setQss(self):
         color = 'dark' if isDarkTheme() else 'light'
-        with open(f'resource/{color}/demo.qss', encoding='utf-8') as f:
+        with open(f'widgets/widget2/resource/{color}.qss', encoding='utf-8') as f:
             self.setStyleSheet(f.read())
 
     def switchTo(self, widget):
@@ -209,14 +225,13 @@ class Window(FramelessWindow):
             QDesktopServices.openUrl(QUrl("https://afdian.net/a/zhiyiYo"))
 
     def __del__(self):
-        print('被释放了')
+        print('子窗口被被释放了')
 
-if __name__ == '__main__':
-    QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
-    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
-    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        print('开始释放子窗口资源...')
+        # 释放完结束以后
+        self.close_s.emit()
 
-    app = QApplication(sys.argv)
-    win = Window(None)
-    win.show()
-    app.exec_()
+    def initStyle(self):
+        self.setStyleSheet('')
+

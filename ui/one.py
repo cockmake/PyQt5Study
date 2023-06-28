@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading pages file 'one.pages'
+# Form implementation generated from reading ui file 'one.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #

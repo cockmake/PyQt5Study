@@ -10,7 +10,6 @@ from .window_effect import LinuxWindowEffect
 
 class LinuxFramelessWindow(QWidget):
     """ Frameless window for Linux system """
-
     BORDER_WIDTH = 5
 
     def __init__(self, parent=None):

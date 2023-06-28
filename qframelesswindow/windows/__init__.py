@@ -22,7 +22,10 @@ class WindowsFramelessWindow(QWidget):
 
     BORDER_WIDTH = 5
 
-    def __init__(self, parent=None):
+    def __del__(self):
+        print('被释放')
+
+    def __init__(self, parent):
         super().__init__(parent=parent)
         self.windowEffect = WindowsWindowEffect(self)
         self.titleBar = TitleBar(self)

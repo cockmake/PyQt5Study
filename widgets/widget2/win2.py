@@ -14,10 +14,9 @@ from qfluentwidgets import FluentIcon as FIF
 from qfluentwidgets import (NavigationBar, NavigationItemPosition, MessageBox,
                             isDarkTheme, SearchLineEdit, PopUpAniStackedWidget)
 from qframelesswindow.windows import WindowsFramelessWindow, TitleBar
-from ui import two
 from PyQt5 import QtGui
-from utils import stop_thread
-from utils.MThreading import MThread
+from methods import MThread
+from widgets.widget3.win3 import Win3
 
 class Widget(QWidget):
     def __init__(self, text: str, parent=None):
@@ -112,12 +111,10 @@ class CustomTitleBar(TitleBar):
     def resizeEvent(self, e):
         self.searchLineEdit.move((self.width() - self.searchLineEdit.width()) // 2, 8)
 
-
-
-class Win2(WindowsFramelessWindow, two.Ui_Form2):
+class Win2(WindowsFramelessWindow):
     close_s = pyqtSignal()
     
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         # super(Win2, self).__init__()
         super().__init__(parent)
         self.setTitleBar(CustomTitleBar(self))
@@ -131,7 +128,7 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
         self.navigationBar = NavigationBar(self)
         self.stackWidget = StackedWidget(self)
         # create sub interface
-        self.homeInterface = Widget('Home Interface', self)
+        self.homeInterface = Win3(self)
         self.appInterface = Widget('Application Interface', self)
         self.videoInterface = Widget('Video Interface', self)
         self.libraryInterface = Widget('library Interface', self)
@@ -143,8 +140,8 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
         self.initNavigation()
 
         self.initWindow()
-        self.th = MThread()
-        self.th.start()
+        # self.th = MThread()
+        # self.th.start()
         print('子窗口被创建了')
 
     def initLayout(self):
@@ -153,7 +150,6 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
         self.hBoxLayout.addWidget(self.navigationBar)
         self.hBoxLayout.addWidget(self.stackWidget)
         self.hBoxLayout.setStretchFactor(self.stackWidget, 1)
-
     def initNavigation(self):
         self.addSubInterface(self.homeInterface, FIF.HOME, '主页', selectedIcon=FIF.HOME_FILL)
         self.addSubInterface(self.appInterface, FIF.APPLICATION, '应用')
@@ -172,12 +168,10 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
 
         self.stackWidget.currentChanged.connect(self.onCurrentInterfaceChanged)
         self.navigationBar.setCurrentItem(self.homeInterface.objectName())
-
-
     def initWindow(self):
         self.resize(900, 700)
         self.setWindowIcon(QIcon(':/qfluentwidgets/images/logo.png'))
-        self.setWindowTitle('PyQt-Fluent-Widgets')
+        self.setWindowTitle('带有导航栏的')
         self.titleBar.setAttribute(Qt.WA_StyledBackground)
 
         desktop = QApplication.desktop().availableGeometry()
@@ -185,7 +179,6 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
         self.move(w // 2 - self.width() // 2, h // 2 - self.height() // 2)
 
         self.setQss()
-
     def addSubInterface(self, interface, icon, text: str, position=NavigationItemPosition.TOP, selectedIcon=None):
         """ add sub interface """
         self.stackWidget.addWidget(interface)
@@ -197,19 +190,15 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
             selectedIcon=selectedIcon,
             position=position,
         )
-
     def setQss(self):
         color = 'dark' if isDarkTheme() else 'light'
-        with open(f'widgets/widget2/resource/{color}.qss', encoding='utf-8') as f:
+        with open(f'resource/{color}.qss', encoding='utf-8') as f:
             self.setStyleSheet(f.read())
-
     def switchTo(self, widget):
         self.stackWidget.setCurrentWidget(widget)
-
     def onCurrentInterfaceChanged(self, index):
         widget = self.stackWidget.widget(index)
         self.navigationBar.setCurrentItem(widget.objectName())
-
     def showMessageBox(self):
         w = MessageBox(
             '支持作者🥰',
@@ -221,18 +210,25 @@ class Win2(WindowsFramelessWindow, two.Ui_Form2):
 
         if w.exec():
             QDesktopServices.openUrl(QUrl("https://afdian.net/a/zhiyiYo"))
-
     def __del__(self):
         print('子窗口被被释放了')
-
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         print('开始释放子窗口资源...')
-        self.th.stop_flag = True
+        # self.th.stop_flag = True
         # 释放完结束以后通知父窗口已经关闭 并调用deleteLater
         self.close_s.emit()
         self.deleteLater()
-
-
-    def initStyle(self):
-        self.setStyleSheet('')
-
+if __name__ == '__main__':
+    # 创建QApplication类的实例
+    QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+    app = QApplication(sys.argv)
+    # 创建一个窗口 可传递参数 窗口由u111i初始化 更加独立化的设计
+    # 显示窗口
+    win = Win2()
+    win.show()
+    # win_two = win2.Win2()
+    # win_two.show()
+    # 进入程序的主循环，并通过exit函数确保主循环安全结束(该释放资源的一定要释放)
+    sys.exit(app.exec_())

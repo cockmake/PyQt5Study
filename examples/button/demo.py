@@ -179,8 +179,6 @@ class PushButtonDemo(QWidget):
 
         self.resize(600, 700)
 
-
-
 if __name__ == '__main__':
     # enable dpi scale
     QApplication.setHighDpiScaleFactorRoundingPolicy(
@@ -192,6 +190,6 @@ if __name__ == '__main__':
     w1 = ToolButtonDemo()
     w1.show()
 
-    w2 = PushButtonDemo()
-    w2.show()
+    # w2 = PushButtonDemo()
+    # w2.show()
     app.exec_()

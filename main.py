@@ -6,7 +6,6 @@ from PyQt5.QtWidgets import (
 # 解决设计窗口与显示窗口不同的问题
 from widgets.widget import win
 from widgets.widget2 import win2
-from qt_material import apply_stylesheet
 from PyQt5.QtCore import Qt
 # 画质和窗口问题
 QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
@@ -15,7 +14,6 @@ QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 if __name__ == '__main__':
     # 创建QApplication类的实例
     app = QApplication(sys.argv)
-    apply_stylesheet(app, 'default')
     # 创建一个窗口 可传递参数 窗口由u111i初始化 更加独立化的设计
     # 显示窗口
     win_one = win.Win()

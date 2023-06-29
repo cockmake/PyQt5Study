@@ -1,9 +1,9 @@
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QDesktopWidget, QFileDialog
-from ui import one
+from .ui import one
 import cv2 as cv
-import utils
+import methods
 from PyQt5 import QtGui
 from widgets.widget2.win2 import Win2
 from PyQt5.QtGui import QPixmap
@@ -50,7 +50,7 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
         if img_path == '': return
         try:
             img = cv.imread(img_path)
-            q_img = utils.cvimg_to_qtimg(img).scaled(self.label_img.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
+            q_img = methods.cvimg_to_qtimg(img).scaled(self.label_img.size(), Qt.KeepAspectRatio, Qt.SmoothTransformation)
             q_pix = QPixmap(q_img)
             self.label_img.setPixmap(q_pix)
 

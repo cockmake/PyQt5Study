@@ -63,7 +63,8 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
     def open_new_win(self, flag):
         try:
             if self.son_win is None:
-                self.son_win = Win2(self.parent())
+                self.son_win = Win2()
+                self.son_win.setAttribute(Qt.WA_DeleteOnClose)
                 self.son_win.close_s.connect(self.closeSonWin)  # 子窗口与父窗口的关闭释放函数绑定
             self.son_win.show()
         except Exception as E:
@@ -88,5 +89,6 @@ class Win(QtWidgets.QWidget, one.Ui_Form):
     def closeSonWin(self):
         # 这里操作子窗口被关闭并已经释放了其资源后的处理
         # 这里利用python的垃圾回收机制释放窗口占用的资源
+
         self.son_win = None
         print('父窗口操作子窗口关闭事件')

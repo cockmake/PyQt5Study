@@ -192,7 +192,7 @@ class Win2(WindowsFramelessWindow):
         )
     def setQss(self):
         color = 'dark' if isDarkTheme() else 'light'
-        with open(f'resource/{color}.qss', encoding='utf-8') as f:
+        with open(f'widgets/widget2/resource/{color}.qss', encoding='utf-8') as f:
             self.setStyleSheet(f.read())
     def switchTo(self, widget):
         self.stackWidget.setCurrentWidget(widget)
@@ -212,12 +212,14 @@ class Win2(WindowsFramelessWindow):
             QDesktopServices.openUrl(QUrl("https://afdian.net/a/zhiyiYo"))
     def __del__(self):
         print('子窗口被被释放了')
+
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
         print('开始释放子窗口资源...')
         # self.th.stop_flag = True
         # 释放完结束以后通知父窗口已经关闭 并调用deleteLater
         self.close_s.emit()
         self.deleteLater()
+
 if __name__ == '__main__':
     # 创建QApplication类的实例
     QApplication.setHighDpiScaleFactorRoundingPolicy(Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
